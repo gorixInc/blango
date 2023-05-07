@@ -54,6 +54,13 @@ class Dev(Configuration):
         'crispy_bootstrap5'
     ]
 
+    PASSWORD_HASHERS = [
+      'django.contrib.auth.hashers.Argon2PasswordHasher',
+      'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+      'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+      'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    ]
+
     CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
     CRISPY_TEMPLATE_PACK = "bootstrap5"
 
