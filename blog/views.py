@@ -4,10 +4,15 @@ from blog.models import Post
 from django.shortcuts import redirect
 from blog.forms import CommentForm
 import logging
+from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_cookie
+
 # Create your views here.
 
 logger = logging.getLogger(__name__)
 
+@cache_page(300)
+@vary_on_cookie
 def index(request):
   posts = Post.objects.filter(published_at__lte=timezone.now())
   logger.debug("Got %d posts", len(posts))
